@@ -1,0 +1,13 @@
+.article-card {
+    display: flex;
+    flex-direction: row;
+}
+.article-card img{
+    margin: 0 5px;
+    width: 200px;
+    height: 100%;
+}
+.article-card div{
+    margin: 0 5px;
+}
+
