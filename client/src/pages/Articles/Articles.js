@@ -70,7 +70,10 @@ class Articles extends Component {
       axios
         .get(url)
         .then(res => {
-          this.setState({ articles: res.data.response.docs, searchProcessed: true});
+          this.setState({
+            articles: res.data.response.docs.filter((value, index) => index < 5),
+            searchProcessed: true
+          });
           console.log(res.data.response.docs);
         })
         .catch(err => console.log(err));
@@ -123,12 +126,11 @@ class Articles extends Component {
                 {this.state.articles.map(article => (
                   <ListItem key={article._id}>
                     <div className="article-card">
-                      {/* <img src={"https://static01.nyt.com/"+article.multimedia[1].url} alt=""/> */}
                       <div>
                         <h3>{article.headline.main}</h3>
-                        {/* <h4>{article.byline.original}</h4> */}
+                        
                         <p>Published: {article.pub_date}</p>
-                        {/* <p>{article.snippet}</p> */}
+                        
                         <a href={article.web_url} target="_blank">
                           <p>{article.web_url}</p>
                         </a>
